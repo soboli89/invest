@@ -1,0 +1,283 @@
+:root {
+  color-scheme: light;
+  --ink: #17241f;
+  --muted: #78827d;
+  --green: #245c48;
+  --green-dark: #193d31;
+  --mint: #e8f1eb;
+  --line: #e8ece8;
+  --paper: #fff;
+  --canvas: #f7f8f6;
+  --amber: #a76b21;
+  --red: #a1443d;
+  font-family: "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); min-width: 320px; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+
+.login-layout { min-height: 100vh; display: grid; grid-template-columns: minmax(360px, 0.9fr) 1.1fr; background: white; }
+.login-aside { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; padding: 48px clamp(36px, 6vw, 88px); overflow: hidden; color: white; background: #19372c; }
+.login-aside::before, .login-aside::after { position: absolute; content: ""; border: 1px solid rgba(220, 239, 225, .11); border-radius: 50%; pointer-events: none; }
+.login-aside::before { width: 540px; height: 540px; right: -210px; bottom: -180px; }
+.login-aside::after { width: 380px; height: 380px; right: -130px; bottom: -100px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-family: "Segoe UI", sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .14em; }
+.brand-light { position: relative; z-index: 1; color: white; }
+.brand-mark { display: grid; width: 39px; height: 39px; place-items: center; color: var(--green-dark); background: #d3e6d9; border-radius: 50% 50% 50% 12px; font-family: "Segoe UI", sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 0; }
+.brand-sub { display: block; margin-top: 3px; font-family: "Segoe UI", sans-serif; font-size: 8px; font-weight: 500; letter-spacing: .18em; opacity: .63; }
+.aside-copy { position: relative; z-index: 1; max-width: 440px; margin-top: -40px; }
+.eyebrow { color: #5b806e; font-size: 10px; font-weight: 700; letter-spacing: .15em; }
+.eyebrow-light { color: #b6d0be; }
+h1, h2, h3, p { margin-top: 0; }
+.aside-copy h1 { margin: 22px 0 18px; font-family: "Segoe UI", sans-serif; font-size: clamp(38px, 4vw, 58px); font-weight: 500; letter-spacing: -.055em; line-height: 1.12; }
+.aside-copy p { max-width: 360px; color: #c2d0c8; font-size: 15px; line-height: 1.8; }
+.aside-foot { position: relative; z-index: 1; color: #a9beb2; font-size: 9px; letter-spacing: .13em; }
+.aside-foot span, .footer span { padding: 0 6px; color: #84aa93; }
+.login-main { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 48px 28px 30px; }
+.login-card { width: min(100%, 410px); }
+.mobile-brand { display: none; }
+.login-card h2 { margin: 12px 0 9px; font-family: "Segoe UI", sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -.04em; }
+.muted { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.login-card > .muted { margin-bottom: 32px; }
+.form-stack, .compact-form { display: flex; flex-direction: column; }
+.form-stack label, .compact-form > label { margin: 0 0 8px; color: #303e37; font-size: 12px; font-weight: 600; }
+.form-stack input, .compact-form input, .compact-form textarea, .compact-form select { width: 100%; margin-bottom: 20px; padding: 12px 13px; color: var(--ink); background: white; border: 1px solid #dfe5df; border-radius: 7px; outline: none; transition: border-color .15s, box-shadow .15s; }
+.form-stack input:focus, .compact-form input:focus, .compact-form textarea:focus, .compact-form select:focus { border-color: #7aa38c; box-shadow: 0 0 0 3px rgba(58, 112, 82, .1); }
+input::placeholder, textarea::placeholder { color: #a1aaa4; }
+.form-stack input { margin-bottom: 23px; padding: 14px; font-size: 13px; }
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 12px; min-height: 40px; padding: 0 16px; border: 1px solid transparent; border-radius: 6px; font-size: 12px; font-weight: 600; transition: background .15s, border-color .15s; }
+.button:disabled { opacity: .6; cursor: wait; }
+.button-primary { color: white; background: var(--green); }
+.button-primary:hover { background: var(--green-dark); }
+.button-secondary { color: #214634; background: #e9f1eb; }
+.button-secondary:hover { background: #dce9df; }
+.button-quiet { color: #55635b; background: transparent; }
+.button-quiet:hover { background: #f0f3f0; }
+.button-wide { width: 100%; min-height: 47px; }
+.form-error { min-height: 18px; margin: -9px 0 11px; color: var(--red); font-size: 11px; line-height: 1.5; }
+.form-success { color: var(--green); }
+.login-note { margin: 28px 0 0; padding-top: 20px; color: #89918c; border-top: 1px solid var(--line); font-size: 11px; }
+.copyright { margin-top: 64px; color: #9ca49f; font-size: 10px; }
+
+.dashboard { min-height: 100vh; }
+.topbar { position: sticky; z-index: 5; top: 0; display: flex; justify-content: space-between; align-items: center; min-height: 76px; padding: 0 max(calc((100vw - 1180px) / 2), 34px); background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+.topbar-right { display: flex; align-items: center; gap: 8px; }
+.user-label { padding-right: 14px; color: #435149; font-size: 12px; font-weight: 600; }
+.page-content { max-width: 1180px; min-height: calc(100vh - 138px); margin: 0 auto; padding: 56px 34px 84px; }
+.page-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 44px; }
+.page-heading h1 { margin: 11px 0 6px; font-family: Manrope, sans-serif; font-size: clamp(30px, 4vw, 40px); font-weight: 600; letter-spacing: -.05em; }
+.page-heading .muted { margin: 0; }
+.count-pill, .small-count { padding: 7px 11px; color: #44634f; background: #eaf1eb; border-radius: 20px; font-size: 10px; font-weight: 600; }
+.admin-section { margin: 0 0 58px; }
+.section-heading { margin-bottom: 19px; }
+.section-heading h2, .projects-heading h2 { margin: 7px 0 0; font-family: "Segoe UI", sans-serif; font-size: 21px; font-weight: 600; letter-spacing: -.035em; }
+.admin-grid { display: grid; grid-template-columns: minmax(270px, .75fr) minmax(380px, 1.25fr); gap: 18px; align-items: start; }
+.panel { padding: 23px; background: var(--paper); border: 1px solid var(--line); border-radius: 9px; }
+.panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+.panel-heading h3, .password-panel h3 { margin: 0; font-family: "Segoe UI", sans-serif; font-size: 15px; font-weight: 700; }
+.panel-heading .muted { margin: 7px 0 0; font-size: 11px; }
+.compact-form > label { font-size: 11px; }
+.compact-form input, .compact-form textarea, .compact-form select { margin-bottom: 15px; padding: 10px 11px; border-radius: 5px; font-size: 12px; }
+.compact-form textarea { resize: vertical; line-height: 1.55; }
+.compact-form select { cursor: pointer; }
+.field-hint { float: right; color: #929b95; font-size: 9px; font-weight: 400; }
+.client-list { margin-top: 19px; }
+.client-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid #edf0ed; }
+.client-info { display: grid; gap: 3px; min-width: 0; }
+.client-info strong { overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.client-info span { overflow: hidden; color: #8a938d; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.customer-projects-panel { margin-top: 18px; }
+.customer-projects-panel .panel-heading { margin-bottom: 12px; }
+.customer-project-list { display: grid; }
+.customer-project-card { display: grid; grid-template-columns: minmax(170px, .7fr) minmax(0, 1.3fr); gap: 20px; padding: 15px 0; border-top: 1px solid #edf0ed; }
+.customer-project-customer { display: grid; align-content: start; gap: 5px; min-width: 0; }
+.customer-project-customer strong { overflow-wrap: anywhere; font-size: 12px; font-weight: 600; }
+.customer-project-customer > span { overflow-wrap: anywhere; color: #8a938d; font-size: 10px; }
+.customer-project-items { display: grid; gap: 8px; }
+.customer-project-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 5px 12px; min-width: 0; }
+.customer-project-title { overflow-wrap: anywhere; color: #35463c; font-size: 11px; }
+.customer-investment-amount { grid-column: 1; color: #426e50; font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.customer-project-item .status { grid-column: 2; grid-row: 1 / span 2; }
+.customer-no-projects { color: #929b95; font-size: 11px; font-style: italic; }
+.news-management-panel { margin-top: 18px; }
+.news-management-panel .panel-heading { margin-bottom: 16px; }
+.news-publish-option { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; color: #536258; font-size: 11px; cursor: pointer; }
+.news-publish-option input { width: 15px; height: 15px; margin: 0; accent-color: var(--green); }
+.admin-news-list { display: grid; margin-top: 18px; }
+.admin-news-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 12px 0; border-top: 1px solid #edf0ed; }
+.admin-news-info { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; min-width: 0; }
+.admin-news-info strong { overflow-wrap: anywhere; font-size: 11px; font-weight: 600; }
+.news-status { padding: 4px 7px; color: #8c642b; background: #f7f0e2; border-radius: 4px; font-size: 9px; font-weight: 600; }
+.news-status-published { color: #356246; background: #e9f2eb; }
+.admin-news-actions { display: flex; flex: 0 0 auto; gap: 12px; }
+.icon-button { flex: 0 0 auto; display: grid; width: 27px; height: 27px; place-items: center; color: #7f8982; background: transparent; border: 0; border-radius: 50%; font-size: 20px; }
+.icon-button:hover { color: var(--red); background: #fbefed; }
+.list-empty { margin: 0; padding: 13px 0; color: #8a938d; font-size: 11px; line-height: 1.6; }
+.client-picker { margin: 0 0 14px; padding: 11px; border: 1px solid var(--line); border-radius: 5px; }
+.client-picker legend { padding: 0 5px; color: #303e37; font-size: 11px; font-weight: 600; }
+.picker-hint { margin: 0 0 10px; color: #89928c; font-size: 10px; line-height: 1.5; }
+.client-picker-list { display: grid; max-height: 260px; overflow: auto; }
+.client-investment-row { display: grid; grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(120px, .75fr); align-items: center; gap: 9px; padding: 9px 0; border-top: 1px solid #edf0ed; }
+.checkbox-row { display: flex; align-items: center; gap: 9px; color: #59665e; font-size: 10px; line-height: 1.5; cursor: pointer; }
+.checkbox-row input { width: 14px; height: 14px; margin: 0; accent-color: var(--green); }
+.client-investment-email { overflow: hidden; color: #8a938d; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.client-investment-input { display: grid; gap: 4px; color: #657168; font-size: 9px; }
+.client-investment-input input { min-width: 0; margin: 0 !important; padding: 7px 8px !important; font-size: 11px !important; }
+.client-investment-input input:disabled { color: #a1aaa4; background: #f3f5f3; }
+.form-actions { display: flex; gap: 8px; }
+.projects-heading { margin-bottom: 20px; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.project-card { display: flex; min-height: 215px; flex-direction: column; align-items: flex-start; padding: 22px; background: white; border: 1px solid var(--line); border-radius: 8px; transition: box-shadow .2s, transform .2s; }
+.project-card:hover { transform: translateY(-2px); box-shadow: 0 9px 25px rgba(29, 52, 39, .06); }
+.card-meta { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px; }
+.status { padding: 5px 8px; color: #356246; background: #e9f2eb; border-radius: 4px; font-size: 9px; font-weight: 600; }
+.status-completed { color: #52635a; background: #edf0ed; }
+.status-on-hold { color: #8c642b; background: #f7f0e2; }
+.status-in-progress { color: #416a82; background: #e9f1f5; }
+.assignment-count { color: #89928c; font-size: 10px; }
+.project-card h3 { margin: 0 0 9px; font-family: "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -.025em; }
+.project-terms { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 11px; }
+.project-terms span { padding: 5px 8px; color: #45634e; background: #f0f4f0; border-radius: 4px; font-size: 9px; font-weight: 600; }
+.project-dates { display: flex; flex-wrap: wrap; gap: 5px 14px; margin: -3px 0 11px; color: #68776d; font-size: 9px; font-variant-numeric: tabular-nums; }
+.investment-block { width: 100%; margin: 0 0 15px; padding: 11px; background: #f8faf8; border: 1px solid #edf1ed; border-radius: 6px; }
+.investment-client-name { margin: 0 0 9px; color: #58675d; font-size: 10px; font-weight: 600; }
+.investment-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+.investment-metric { display: grid; gap: 4px; min-width: 0; }
+.investment-metric > span { color: #849087; font-size: 8px; }
+.investment-metric strong { overflow-wrap: anywhere; color: #364940; font-size: 11px; font-variant-numeric: tabular-nums; }
+.investment-metric .estimated-earnings { color: #426e50; }
+.investment-metric .projected-total { color: #203d2c; }
+.investment-chart { display: block; width: 100%; height: auto; margin-top: 7px; overflow: visible; }
+.chart-gridline { stroke: #e8eee8; stroke-width: 1; }
+.chart-axis { stroke: #cbd6cc; stroke-width: 1; }
+.chart-investment-guide { stroke: #93a798; stroke-dasharray: 4 4; stroke-width: 1; }
+.chart-earnings-area { fill: #dcebdd; }
+.chart-projection-line { fill: none; stroke: #39704b; stroke-linecap: round; stroke-width: 2.5; }
+.chart-time-label { fill: #879289; font-family: "Segoe UI", sans-serif; font-size: 9px; }
+.chart-caption { margin: 0; color: #8b948e; font-size: 8px; line-height: 1.5; }
+.estimate-unavailable { margin: 0 0 12px; color: #89928c; font-size: 10px; line-height: 1.5; }
+.project-description { margin: 0 0 20px; color: #78827c; font-size: 11px; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+.updated-label { margin-top: auto; color: #9aa39d; font-size: 8px; font-weight: 600; letter-spacing: .1em; }
+.card-actions { display: flex; gap: 15px; width: 100%; margin-top: 15px; padding-top: 12px; border-top: 1px solid #edf0ed; }
+.text-button { padding: 0; color: #456b55; background: transparent; border: 0; font-size: 10px; font-weight: 600; }
+.text-button:hover { text-decoration: underline; }
+.text-danger { color: var(--red); }
+.empty-state { padding: 70px 20px; text-align: center; background: white; border: 1px dashed #dfe5df; border-radius: 8px; }
+.empty-icon { display: inline-grid; width: 42px; height: 42px; place-items: center; margin-bottom: 12px; color: #588268; background: #edf3ee; border-radius: 50%; font-size: 18px; }
+.empty-state h3 { margin: 0 0 7px; font-family: "Segoe UI", sans-serif; font-size: 15px; }
+.empty-state p { margin: 0; color: #89928c; font-size: 11px; }
+.news-section { margin-top: 54px; }
+.news-section .section-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 17px; }
+.news-section .section-heading h2 { margin: 7px 0 0; font-family: "Segoe UI", sans-serif; font-size: 21px; font-weight: 600; letter-spacing: -.035em; }
+.news-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.news-card { padding: 20px; background: white; border: 1px solid var(--line); border-radius: 8px; }
+.news-date { display: block; margin-bottom: 9px; color: #819087; font-size: 9px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.news-card h3 { margin: 0 0 9px; font-family: "Segoe UI", sans-serif; font-size: 15px; font-weight: 700; }
+.news-content { margin: 0; color: #68756c; font-size: 11px; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+.password-section { margin-top: 45px; }
+.password-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.password-panel h3 { margin-top: 9px; }
+.password-panel .muted { margin: 7px 0 0; }
+.password-panel .compact-form { max-width: 420px; }
+.footer { padding: 20px 34px; color: #9aa39d; background: white; border-top: 1px solid var(--line); text-align: center; font-size: 8px; letter-spacing: .12em; }
+.toast { position: fixed; z-index: 10; right: 24px; bottom: 24px; max-width: min(400px, calc(100vw - 48px)); padding: 13px 17px; color: white; background: #263d31; border-radius: 6px; box-shadow: 0 8px 25px rgba(20, 40, 30, .18); font-size: 12px; }
+
+@media (max-width: 900px) {
+  .admin-grid { grid-template-columns: minmax(240px, .8fr) minmax(300px, 1.2fr); gap: 12px; }
+  .panel { padding: 18px; }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .topbar { padding-right: 24px; padding-left: 24px; }
+}
+@media (max-width: 680px) {
+  .login-layout { display: block; }
+  .login-aside { display: none; }
+  .login-main { min-height: 100vh; padding: 30px 24px; }
+  .login-card { width: min(100%, 430px); }
+  .mobile-brand { display: inline-flex; margin-bottom: 65px; }
+  .copyright { margin-top: 48px; }
+  .topbar { min-height: 68px; padding: 0 16px; }
+  .brand { gap: 8px; font-size: 11px; }
+  .brand-mark { width: 34px; height: 34px; }
+  .topbar-right { gap: 0; }
+  .user-label { display: none; }
+  .topbar-right .button { padding: 0 9px; font-size: 10px; }
+  .page-content { padding: 37px 17px 58px; }
+  .page-heading { align-items: start; margin-bottom: 34px; }
+  .page-heading h1 { font-size: 30px; }
+  .page-heading .muted { max-width: 280px; font-size: 11px; }
+  .count-pill { margin-top: 22px; white-space: nowrap; }
+  .admin-grid { grid-template-columns: 1fr; }
+  .admin-section { margin-bottom: 43px; }
+  .client-investment-row { grid-template-columns: minmax(0, 1fr) minmax(110px, .8fr); gap: 6px 10px; }
+  .client-investment-email { grid-column: 1; grid-row: 2; padding-left: 23px; }
+  .client-investment-input { grid-column: 2; grid-row: 1 / span 2; }
+  .customer-project-card { grid-template-columns: 1fr; gap: 10px; }
+  .news-list { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card { min-height: 190px; }
+  .password-panel { grid-template-columns: 1fr; gap: 20px; }
+  .footer { padding: 18px 12px; font-size: 7px; }
+}
+
+body { font-size: 17px; }
+.brand { font-size: 14px; }
+.brand-sub { font-size: 10px; }
+.eyebrow { font-size: 12px; }
+.aside-foot { font-size: 11px; }
+.aside-copy p { font-size: 17px; }
+.login-card h2 { font-size: 30px; }
+.muted { font-size: 15px; }
+.form-stack label, .compact-form > label { font-size: 14px; }
+.form-stack input { font-size: 15px; }
+.button { font-size: 14px; }
+.form-error { font-size: 13px; }
+.login-note { font-size: 13px; }
+.copyright { font-size: 12px; }
+.user-label { font-size: 14px; }
+.page-heading h1 { font-size: clamp(34px, 4vw, 44px); }
+.count-pill, .small-count { font-size: 12px; }
+.section-heading h2, .projects-heading h2, .news-section .section-heading h2 { font-size: 23px; }
+.panel-heading h3, .password-panel h3 { font-size: 17px; }
+.panel-heading .muted { font-size: 13px; }
+.compact-form > label { font-size: 13px; }
+.compact-form input, .compact-form textarea, .compact-form select { font-size: 14px; }
+.field-hint, .news-status { font-size: 11px; }
+.client-info strong, .customer-project-customer strong { font-size: 14px; }
+.client-info span, .customer-project-customer > span { font-size: 12px; }
+.customer-project-card { font-size: 14px; }
+.client-picker legend { font-size: 13px; }
+.picker-hint { font-size: 12px; }
+.checkbox-row { font-size: 12px; }
+.client-investment-email, .client-investment-input { font-size: 11px; }
+.client-investment-input input { font-size: 13px !important; }
+.status { font-size: 11px; }
+.assignment-count { font-size: 12px; }
+.project-card h3 { font-size: 18px; }
+.project-terms span { font-size: 11px; }
+.project-dates { font-size: 11px; }
+.investment-client-name { font-size: 12px; }
+.investment-metric > span { font-size: 10px; }
+.investment-metric strong { font-size: 13px; }
+.chart-time-label { font-size: 11px; }
+.chart-caption, .updated-label { font-size: 10px; }
+.estimate-unavailable { font-size: 12px; }
+.project-description { font-size: 13px; }
+.text-button { font-size: 12px; }
+.empty-state h3, .news-card h3 { font-size: 17px; }
+.empty-state p, .news-content { font-size: 13px; }
+.news-date { font-size: 11px; }
+.footer { font-size: 10px; }
+.toast { font-size: 14px; }
+
+@media (max-width: 680px) {
+  .brand { font-size: 13px; }
+  .topbar-right .button { font-size: 12px; }
+  .page-heading h1 { font-size: 34px; }
+  .page-heading .muted { font-size: 13px; }
+  .footer { font-size: 10px; }
+}
